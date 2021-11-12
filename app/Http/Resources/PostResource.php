@@ -18,9 +18,9 @@ class PostResource extends JsonResource
             'id'=>$this->id,
             'title'=>$this->title,
             'description'=>$this->description,
+            'status'=>$this->status,
             'created_by'=>new AdminResouce($this->whenLoaded('admin')),
             'file'=>new FileResource($this->whenLoaded('file')),
-            'status'=>$this->status
         ];
     }
 }

@@ -61,7 +61,7 @@ class PostController extends Controller
         try {
             DB::beginTransaction();
             $data = $request->except('thumbnail');
-            $data['admin_id'] = auth('admin')->user()->id;
+            $data['admin_id'] = auth('admin-api')->user()->id;
             $post = $this->post->createPost($data);
             if ($request->hasFile('thumbnail')) {
                 $service->addFile('post', $post->id);

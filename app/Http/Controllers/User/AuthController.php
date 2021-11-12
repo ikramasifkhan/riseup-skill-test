@@ -56,4 +56,13 @@ class AuthController extends Controller
             return \response()->sendErrorWithException($exception, 'OPPS! Something Wrong', 500);
         }
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout successfully'
+        ]);
+    }
 }

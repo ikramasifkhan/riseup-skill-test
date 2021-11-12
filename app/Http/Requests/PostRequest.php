@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
             'title'=>'required|string',
             'description'=>'required|string',
             'status'=>Rule::in(['active', 'inactive']),
-            'thumbnail'=>'required|file'
+            'thumbnail'=>'required|image'
         ];
     }
 }

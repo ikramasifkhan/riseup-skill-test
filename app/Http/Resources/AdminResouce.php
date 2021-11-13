@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Post;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AdminResouce extends JsonResource
@@ -18,7 +19,8 @@ class AdminResouce extends JsonResource
             'id'=>$this->id,
             'name'=>$this->name,
             'email'=>$this->email,
-            'mobile'=>$this->mobile
+            'mobile'=>$this->mobile,
+            'posts'=>PostResource::collection($this->whenLoaded('posts'))
         ];
     }
 }

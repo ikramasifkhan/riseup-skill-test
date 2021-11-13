@@ -96,19 +96,31 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminRequest $request, Admin $admin)
     {
-        //
+        try{
+            $data = $request->validated();
+            $this->admin->updateAdmin($data, $admin);
+            $adminData = new AdminResouce($admin);
+            return response()->sendSuccess($adminData, 'Admin Update');
+        }catch (\Exception $exception){
+            return \response()->sendErrorWithException($exception, 'OPPS! Something Wrong', 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Admin $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Admin $admin)
     {
-        //
+        try{
+            $this->admin->deleteAdmin($admin);
+            return response()->sendSuccess('', 'Delete successful');
+        }catch (\Exception $exception){
+            return \response()->sendErrorWithException($exception, 'OPPS! Something Wrong', 500);
+        }
     }
 }

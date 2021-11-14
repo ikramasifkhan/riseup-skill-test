@@ -4,7 +4,7 @@ This a skill test project for rise up lab
 
 ## Project setup guide line
 - Run 'git clone https://github.com/ikramasifkhan/riseup-skill-test.git'
-- Run 'composer update'
+- Run 'composer install'
 - Make file '.env' and paste code from '.env.example'
 - Make a databes as 'rise-up-laravel'
 - Run 'php artisan migrate:fresh --seed'
